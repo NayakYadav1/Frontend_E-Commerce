@@ -3,6 +3,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
 import * as Pages from "@/pages"
 import { PrivateRoute } from "./PrivateRoute"
 import { AdminRoute } from "./AdminRoute"
+import { CmsRoute } from "./CmsRoute"
 
 export const AppRouter = () => {
     
@@ -25,19 +26,19 @@ export const AppRouter = () => {
                     <Route path=":id" element={<Pages.Staffs.Edit />} />
                 </Route>
 
-                <Route path="customers" element={<PrivateRoute element={<AdminRoute element={<Outlet /> } />} />} >  
+                <Route path="customers" element={<CmsRoute element={<Outlet /> } />} >  
                     <Route index element={<Pages.Customers.List />} />
                     <Route path="create" element={<Pages.Customers.Create />} />
                     <Route path=":id" element={<Pages.Customers.Edit />} />
                 </Route>
 
-                <Route path="categories" element={<AdminRoute element={<Outlet /> } />} >  
+                <Route path="categories" element={<CmsRoute element={<Outlet /> } />} >  
                     <Route index element={<Pages.Categories.List />} />
                     <Route path="create" element={<Pages.Categories.Create />} />
                     <Route path=":id" element={<Pages.Categories.Edit />} />
                 </Route>
 
-                <Route path="brands" element={<AdminRoute element={<Outlet /> } />} >  
+                <Route path="brands" element={<CmsRoute element={<Outlet /> } />} >  
                     <Route index element={<Pages.Brands.List />} />
                     <Route path="create" element={<Pages.Brands.Create />} />
                     <Route path=":id" element={<Pages.Brands.Edit />} />
