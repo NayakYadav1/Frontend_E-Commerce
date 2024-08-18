@@ -23,16 +23,33 @@ export const MenuBar = () => {
                 <Nav className="me-auto">
                     {user.role == 'Admin' && <Nav.Item>
                         <NavLink className="nav-link" to="staffs">
-                            <i className="fa-solid fa-users me-2"></i>Staffs
+                            <i className="fa-solid fa-clipboard-user me-2"></i>Staffs
                         </NavLink>
                     </Nav.Item>}
+                    {(user.role === 'Admin' || user.role === 'Staff') && <>
+                        <Nav.Item>
+                            <NavLink className="nav-link" to="customers">
+                                <i className="fa-solid fa-users me-2"></i>Customers
+                            </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <NavLink className="nav-link" to="categories">
+                                <i className="fa-solid fa-list me-2"></i>Categories
+                            </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <NavLink className="nav-link" to="brands">
+                                <i className="fa-solid fa-star me-2"></i>Brands
+                            </NavLink>
+                        </Nav.Item>
+                    </>}
                 </Nav>
 
                 <Nav className="mb-lg-0 mb-2">
                     <Nav.Item>
                         <NavDropdown title={<>
-                                <i className="fas fa-user-circle me-2"></i>{user.name}
-                            </>} align="end">
+                            <i className="fas fa-user-circle me-2"></i>{user.name}
+                        </>} align="end">
                             <Link className="dropdown-item" to="/profile/edit">
                                 <i className="fa-solid fa-user-edit me-2"></i>Edit Profile
                             </Link>
@@ -41,7 +58,7 @@ export const MenuBar = () => {
                                 <i className="fa-solid fa-asterisk me-2"></i>Change Password
                             </Link>
                             <Dropdown.Divider />
-                            
+
                             <Button variant="link" className="dropdown-item" onClick={handleLogout}>
                                 <i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout
                             </Button>
